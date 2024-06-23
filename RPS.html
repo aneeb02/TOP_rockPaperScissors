@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      console.log("Wow");
+      let playerScore = 0;
+      let compScore = 0;
+
+      const getComputerChoice = () => {
+        const rand = Math.ceil(Math.random() * 3);
+        let choice;
+        switch (rand) {
+          case 1:
+            choice = "rock";
+            break;
+          case 2:
+            choice = "paper";
+            break;
+          case 3:
+            choice = "scissors";
+        }
+
+        return choice;
+      };
+
+      const getPlayerChoice = () => {
+        let choice = prompt("Choose rock, paper, scissors: ");
+        choice = choice.toLowerCase();
+        return choice;
+      };
+
+      const playRound = (human, comp) => {
+        if (human === "paper" && comp === "rock") {
+          console.log(`You Win! ${human} beats ${comp}`);
+          playerScore += 1;
+          console.log(`Your score: ${playerScore}`);
+          console.log(`Computer's score: ${compScore}`);
+        } else if (human === "rock" && comp === "scissors") {
+          console.log(`You Win! ${human} beats ${comp}`);
+          playerScore += 1;
+          console.log(`Your score: ${playerScore}`);
+          console.log(`Computer's score: ${compScore}`);
+        } else if (human === "scissors" && comp === "paper") {
+          console.log(`You Win! ${human} beats ${comp}`);
+          playerScore += 1;
+          console.log(`Your score: ${playerScore}`);
+          console.log(`Computer's score: ${compScore}`);
+        } else if (comp === "paper" && human === "rock") {
+          console.log(`You Lose :( ${comp} beats ${human}`);
+          compScore += 1;
+          console.log(`Your score: ${playerScore}`);
+          console.log(`Computer's score: ${compScore}`);
+        } else if (comp === "rock" && human === "scissors") {
+          console.log(`You Lose :( ${comp} beats ${human}`);
+          compScore += 1;
+          console.log(`Your score: ${playerScore}`);
+          console.log(`Computer's score: ${compScore}`);
+        } else if (comp === "scissors" && human === "paper") {
+          console.log(`You Lose :( ${comp} beats ${human}`);
+          compScore += 1;
+          console.log(`Your score: ${playerScore}`);
+          console.log(`Computer's score: ${compScore}`);
+        }
+      };
+
+      const isWinner = (score) => {
+        if (score === 5) return true;
+      };
+
+      function playGame() {
+        let running = true;
+        while (running) {
+          let player = getPlayerChoice();
+          let computer = getComputerChoice();
+          playRound(player, computer);
+          if (playerScore === 5) {
+            console.log("You win!");
+            running = false;
+          } else if (compScore === 5) {
+            console.log("Computer wins!");
+            running = false;
+          } else continue;
+        }
+      }
+      playGame();
+    </script>
+  </head>
+  <body></body>
+</html>
